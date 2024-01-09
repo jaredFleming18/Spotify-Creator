@@ -1,0 +1,33 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        {% if error %}
+        <div class="alert alert-warning" role="alert">
+            <span>{{ error }}</span>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {# User's Profile Picture #}
+        <img class="propic" src="data:image/png;base64,{{image}}" alt="image">
+    </div>
+    <div class="col">
+        {# Indicate which user's reviews we're looking at #}
+        {{current_user.username}}'s playlist
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {# Show playlist of the user #}
+        <h1>Playlist</h1>
+        {% for song in playlist %}
+            <p>Song: {{song.song}}</p>
+            <p>Artist: {{song.artist}}</p>
+            <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
